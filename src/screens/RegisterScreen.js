@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Button, Text, TextInput, TouchableOpacity, View, StyleSheet} from "react-native";
 
+
 const RegisterScreen = ({navigation}) => {
     const [email, setEmail] = useState(null);
     const [name, setName] = useState(null);
     const [password, setPassword] = useState(null);
-
     return (
         <View style={style.container}>
             <View style={style.wrapper}>
@@ -28,7 +28,7 @@ const RegisterScreen = ({navigation}) => {
                     onChangeText={text => setPassword(text)}
                     secureTextEntry
                 />
-                <Button title="Register" />
+                <Button title="Register"/>
 
                 <View style={{flexDirection: 'row', marginTop: 20}}>
                     <Text>Already have an account?</Text>
