@@ -1,12 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Text, TextInput, TouchableOpacity, View, StyleSheet} from "react-native";
+import {AuthContext} from '../context/AuthContext';
+import Spinner from 'react-native-loading-spinner-overlay';
 
 const LoginScreen = ({navigation}) => {
-const [email, setEmail] = useState(null);
-const [password, setPassword] = useState(null);
-
+    const {login, isLoading} = useContext(AuthContext);
+    const [email, setEmail] = useState(null);
+    const [password, setPassword] = useState(null);
     return (
         <View style={style.container}>
+            <Spinner visibal={isLoading}/>
+            <Text style={{marginBottom:20, fontSize:20, marginRight:10, fontWeight:'bold'}}>Welcom Job Post Login Here!</Text>
             <View style={style.wrapper}>
                 <TextInput 
                     style={style.input} 
@@ -23,7 +27,9 @@ const [password, setPassword] = useState(null);
                     secureTextEntry 
                 />
 
-                <Button title="Login" />
+                <Button title="Login" 
+                    onPress={()=>login(email, password)}
+                />
 
                 <View style={{flexDirection: 'row', marginTop: 20}}>
                     <Text>Don't have an account?</Text>
