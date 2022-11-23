@@ -14,7 +14,7 @@ const Navigation = () => {
         <NavigationContainer>
             <Stack.Navigator>
                 {userInfo.token ?(
-                    <Stack.Screen name="Home" component={HomeScreen}/>
+                    <Stack.Screen name="Home" component={HomeScreen}  options={{headerShown: false}}/>
                 ) : (
                     <>
                         <Stack.Screen 

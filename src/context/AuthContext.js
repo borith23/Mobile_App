@@ -24,18 +24,44 @@ export const AuthProvider = ({children}) =>{
     });
   }
 
+  const register = (name, gender, phone, email, password) => {
+    setIsLoading(true);
+    axios
+      .post(`${BASE_URL}/register`, {
+        name,
+        gender,
+        phone,
+        email,
+        password,
+      })
+      .then(res => {
+        let userInfo = res.data;
+        setUserInfo(userInfo);
+        AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
+        setIsLoading(false);
+        console.log(userInfo);
+      })
+      .catch(e => {
+        console.log(`register error ${e}`);
+        setIsLoading(false);
+      });
+  };
+
   const logout = () =>{
     setIsLoading(true);
     AsyncStorage.removeItem('userInfo');
     setUserInfo({});
     setIsLoading(false);
   }
+
+
   return(
     <AuthContext.Provider value={{
       login,
       logout,
       userInfo,
       isLoading,
+      register,
       }}>
       {children}
     </AuthContext.Provider>

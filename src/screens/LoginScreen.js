@@ -10,6 +10,7 @@ const LoginScreen = ({navigation}) => {
     return (
         <View style={style.container}>
             <Spinner visibal={isLoading}/>
+            <Text style={{marginBottom:20, fontSize:20, marginRight:10, fontWeight:'bold'}}>Welcom Job Post Login Here!</Text>
             <View style={style.wrapper}>
                 <TextInput 
                     style={style.input} 
